@@ -59,16 +59,16 @@
     const center = document.getElementById("sheroCenter");
     const scrollHint = shero.querySelector(".shero__scroll");
     const BASE = 640;       // stage design size in px
-    const CONTENT = 820;    // stage + outward tiles (with safety margin so nothing clips)
-    const MAX_R = 320;      // max tile radius in base px
+    const CONTENT = 812;    // stage + outward tiles (tiles reach ~399px radius)
+    const MAX_R = 315;      // max tile radius in base px
     const ORBIT = 32;       // degrees the ring gently rotates as it blooms
     let ticking = false;
 
     // scale the whole stage to fill the viewport (grows on big screens, shrinks on small)
     const fit = () => {
-      const pad = 24;
+      const pad = 12;
       let s = Math.min((window.innerWidth - pad) / CONTENT, (window.innerHeight - pad) / CONTENT);
-      s = Math.max(0.3, Math.min(s, 1.6));
+      s = Math.max(0.3, Math.min(s, 1.9));
       stage.style.transform = "scale(" + s.toFixed(3) + ")";
     };
 

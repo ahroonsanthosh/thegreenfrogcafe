@@ -152,7 +152,7 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 500; line-height: 1.08;
 .shero__core { position: relative; width: 100%; height: 100%; border-radius: 50%; background: var(--cream); display: flex; align-items: center; justify-content: center; }
 
 /* radial photo tiles — pushed outward by --r and orbited via --a (both set from JS) */
-.shero__tile { position: absolute; width: 140px; height: 140px; border-radius: 22px; overflow: hidden;
+.shero__tile { position: absolute; width: 168px; height: 168px; border-radius: 26px; overflow: hidden;
   border: 5px solid #fff; box-shadow: 0 16px 34px -14px rgba(22,39,29,.55);
   transform: rotate(var(--a, 0deg)) translateX(var(--r, 0px)) rotate(calc(-1 * var(--a, 0deg)));
   transition: transform .25s ease-out; z-index: 1; }
