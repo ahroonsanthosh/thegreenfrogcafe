@@ -48,27 +48,43 @@
 
   <main id="top">
 
-    <!-- ===== HERO ===== -->
-    <section class="hero" id="hero">
-      <div class="hero__media">
-        <img src="assets/g10.webp" alt="Freshly blended smoothies at The Green Frog Café"
-             class="hero__img" data-parallax fetchpriority="high" />
-        <div class="hero__overlay"></div>
-      </div>
+    <!-- ===== HERO (scroll animation) ===== -->
+    <section class="shero" id="hero">
+      <div class="shero__sticky">
+        <div class="shero__stage" id="sheroStage">
+          <div class="shero__ring shero__ring--outer" id="ringOuter">
+            <div class="shero__ring shero__ring--mid" id="ringMid">
+              <div class="shero__grad">
+                <div class="shero__core">
 
-      <div class="hero__content">
-        <p class="hero__eyebrow reveal">Western Road · Cork City</p>
-        <h1 class="hero__title reveal">A little green corner<br />of Cork.</h1>
-        <p class="hero__lead reveal">Freshly blended smoothies, speciality Honduran coffee and real, honest food —
-          served with 100% eco-friendly packaging and a smile from our frog.</p>
-        <div class="hero__actions reveal">
-          <a href="#menu" class="btn btn--solid">Explore the menu</a>
-          <a href="#visit" class="btn btn--ghost">Find us</a>
+                  <div class="shero__tile" style="--a:0deg"><img src="assets/gf-1.webp" alt="The Green Frog Café" loading="eager" /></div>
+                  <div class="shero__tile" style="--a:36deg"><img src="assets/gf-2.webp" alt="Freshly blended smoothie" /></div>
+                  <div class="shero__tile" style="--a:72deg"><img src="assets/gf-3.webp" alt="Fresh cakes and bakes" /></div>
+                  <div class="shero__tile" style="--a:108deg"><img src="assets/gf-4.webp" alt="Café treat" /></div>
+                  <div class="shero__tile" style="--a:144deg"><img src="assets/gf-5.webp" alt="Café food" /></div>
+                  <div class="shero__tile" style="--a:180deg"><img src="assets/gf-6.webp" alt="Speciality coffee" /></div>
+                  <div class="shero__tile" style="--a:216deg"><img src="assets/gf-7.webp" alt="Café counter" /></div>
+                  <div class="shero__tile" style="--a:252deg"><img src="assets/gf-8.webp" alt="Café moment" /></div>
+                  <div class="shero__tile" style="--a:288deg"><img src="assets/gf-9.webp" alt="Café drink" /></div>
+                  <div class="shero__tile" style="--a:324deg"><img src="assets/gf-10.webp" alt="Café food" /></div>
+
+                  <div class="shero__center" id="sheroCenter">
+                    <p class="shero__eyebrow">Western Road · Cork City</p>
+                    <h1 class="shero__title">A little green<br />corner of Cork</h1>
+                    <p class="shero__lead">Freshly blended smoothies, speciality coffee and real food — served sustainably.</p>
+                    <div class="shero__actions">
+                      <a href="#menu" class="btn btn--solid">Explore the menu</a>
+                      <a href="#visit" class="btn btn--dark">Find us</a>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <p class="hero__badge reveal"><span>🌱</span> All packaging 100% eco-friendly · Vegan options on everything</p>
+        <a href="#about" class="shero__scroll" aria-label="Scroll to explore"><span></span></a>
       </div>
-
-      <a href="#about" class="hero__scroll" aria-label="Scroll down"><span></span></a>
     </section>
 
     <!-- ===== ABOUT ===== -->

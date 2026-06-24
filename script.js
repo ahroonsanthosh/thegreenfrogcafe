@@ -49,25 +49,53 @@
     reveals.forEach((el) => io.observe(el));
   }
 
-  /* ---------- Hero parallax ---------- */
-  const heroImg = document.querySelector("[data-parallax]");
-  if (heroImg && !reduceMotion) {
+  /* ---------- Scroll-animation hero ---------- */
+  const shero = document.getElementById("hero");
+  const stage = document.getElementById("sheroStage");
+  if (shero && stage) {
+    const tiles = stage.querySelectorAll(".shero__tile");
+    const ringOuter = document.getElementById("ringOuter");
+    const ringMid = document.getElementById("ringMid");
+    const center = document.getElementById("sheroCenter");
+    const scrollHint = shero.querySelector(".shero__scroll");
+    const BASE = 600;       // stage design size in px
+    const CONTENT = 700;    // stage + outward tiles (tiles reach ~348px radius)
+    const MAX_R = 300;      // max tile radius in base px
     let ticking = false;
-    window.addEventListener(
-      "scroll",
-      () => {
-        if (ticking) return;
-        ticking = true;
-        requestAnimationFrame(() => {
-          const y = window.scrollY;
-          if (y < window.innerHeight) {
-            heroImg.style.transform = "translate3d(0," + (y * 0.18) + "px,0)";
-          }
-          ticking = false;
-        });
-      },
-      { passive: true }
-    );
+
+    // scale the whole stage to fit the viewport (keeps the animation crisp on any device)
+    const fit = () => {
+      const pad = 28;
+      const s = Math.min(1, (window.innerWidth - pad) / CONTENT, (window.innerHeight - pad) / CONTENT);
+      stage.style.transform = "scale(" + s.toFixed(3) + ")";
+    };
+
+    const update = () => {
+      const rect = shero.getBoundingClientRect();
+      const total = shero.offsetHeight - window.innerHeight;
+      const raw = total > 0 ? Math.min(Math.max(-rect.top / total, 0), 1) : 0;
+      // complete the bloom within the first ~55% of the pinned scroll, then hold
+      const p = reduceMotion ? 1 : Math.min(raw / 0.55, 1);
+      const r = p * MAX_R;
+
+      tiles.forEach((t) => t.style.setProperty("--r", r + "px"));
+      ringMid.classList.toggle("is-on", p > 0.15);
+      ringOuter.classList.toggle("is-on", p > 0.45);
+      center.classList.toggle("is-on", p > 0.4);
+      if (scrollHint) scrollHint.style.opacity = p > 0.05 ? "0" : ".9";
+      ticking = false;
+    };
+
+    const onScrollHero = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    };
+
+    fit();
+    update();
+    window.addEventListener("scroll", onScrollHero, { passive: true });
+    window.addEventListener("resize", () => { fit(); update(); }, { passive: true });
   }
 
   /* ---------- Menu tabs ---------- */

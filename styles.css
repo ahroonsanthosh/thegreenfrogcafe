@@ -69,6 +69,8 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 500; line-height: 1.08;
 .btn--solid:hover { background: var(--frog-dark); transform: translateY(-3px); }
 .btn--ghost { border-color: rgba(255,255,255,.6); color: #fff; backdrop-filter: blur(4px); }
 .btn--ghost:hover { background: rgba(255,255,255,.14); transform: translateY(-3px); }
+.btn--dark { background: var(--forest); color: #fff; }
+.btn--dark:hover { background: var(--forest-2); transform: translateY(-3px); }
 .btn--block { width: 100%; }
 
 /* ============================================================
@@ -78,6 +80,7 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 500; line-height: 1.08;
   position: fixed; inset: 0 0 auto 0; z-index: 50;
   transition: background .4s var(--ease), box-shadow .4s, padding .4s;
   padding: .6rem 0;
+  background: rgba(247,245,237,.82); backdrop-filter: blur(10px);
 }
 .nav__inner {
   max-width: var(--maxw); margin-inline: auto;
@@ -87,11 +90,11 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 500; line-height: 1.08;
 .nav__brand { display: flex; align-items: center; gap: .65rem; }
 .nav__logo { transition: transform .5s var(--ease); }
 .nav__brand:hover .nav__logo { transform: rotate(-8deg) scale(1.06); }
-.nav__name { font-family: var(--serif); font-size: 1.35rem; color: #fff; font-weight: 600; letter-spacing: -.01em; }
+.nav__name { font-family: var(--serif); font-size: 1.35rem; color: var(--forest); font-weight: 600; letter-spacing: -.01em; }
 .nav__name em { font-style: italic; color: var(--frog); }
 
 .nav__links { display: flex; align-items: center; gap: 1.7rem; }
-.nav__links a { color: #fff; font-weight: 500; font-size: .95rem; position: relative; padding: .3rem 0; white-space: nowrap; }
+.nav__links a { color: var(--forest); font-weight: 500; font-size: .95rem; position: relative; padding: .3rem 0; white-space: nowrap; }
 .nav__links a:not(.nav__cta)::after {
   content: ""; position: absolute; left: 0; bottom: -2px; width: 0; height: 2px;
   background: var(--frog); transition: width .35s var(--ease);
@@ -100,15 +103,11 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 500; line-height: 1.08;
 .nav__cta { background: var(--frog); color: #fff !important; padding: .5rem 1.1rem; font-size: .9rem; border-radius: 100px; margin-left: .3rem; transition: background .3s, transform .3s; }
 .nav__cta:hover { background: var(--frog-dark); transform: translateY(-2px); }
 
-/* scrolled state */
-.nav.is-scrolled { background: rgba(247,245,237,.92); backdrop-filter: blur(12px); box-shadow: 0 6px 24px -16px rgba(22,39,29,.4); }
-.nav.is-scrolled .nav__name { color: var(--forest); }
-.nav.is-scrolled .nav__links a { color: var(--forest); }
-.nav.is-scrolled .nav__cta, .nav.is-scrolled .nav__cta:hover { color: #fff !important; }
+/* scrolled state — deepen background + shadow */
+.nav.is-scrolled { background: rgba(247,245,237,.95); box-shadow: 0 6px 24px -16px rgba(22,39,29,.4); }
 
 .nav__toggle { display: none; flex-direction: column; gap: 5px; background: none; border: 0; cursor: pointer; padding: 8px; }
-.nav__toggle span { width: 26px; height: 2px; background: #fff; transition: .35s var(--ease); border-radius: 2px; }
-.nav.is-scrolled .nav__toggle span { background: var(--forest); }
+.nav__toggle span { width: 26px; height: 2px; background: var(--forest); transition: .35s var(--ease); border-radius: 2px; }
 
 /* ============================================================
    HERO
@@ -132,6 +131,49 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 500; line-height: 1.08;
 .hero__scroll { position: absolute; bottom: 26px; left: 50%; transform: translateX(-50%); width: 26px; height: 42px; border: 2px solid rgba(255,255,255,.6); border-radius: 100px; }
 .hero__scroll span { position: absolute; top: 8px; left: 50%; transform: translateX(-50%); width: 4px; height: 8px; background: #fff; border-radius: 4px; animation: scrolldot 1.8s infinite; }
 @keyframes scrolldot { 0%{opacity:0;transform:translate(-50%,0)} 40%{opacity:1} 80%{opacity:0;transform:translate(-50%,14px)} }
+
+/* ============================================================
+   SCROLL-ANIMATION HERO
+   ============================================================ */
+.shero { position: relative; height: 220vh; background: var(--cream); }
+.shero__sticky { position: sticky; top: 0; height: 100vh; height: 100svh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+
+/* base stage is 600px; JS scales it to fit the viewport */
+.shero__stage { position: relative; width: 600px; height: 600px; transform-origin: center center; will-change: transform; }
+
+.shero__ring { width: 100%; height: 100%; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid transparent; transition: border-color .5s var(--ease); }
+.shero__ring--outer.is-on { border-color: rgba(22,39,29,.12); }
+.shero__ring--mid   { width: 500px; height: 500px; }
+.shero__ring--mid.is-on { border-color: rgba(95,174,40,.30); }
+
+.shero__grad { width: 400px; height: 400px; border-radius: 50%; padding: 3px; display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(125deg, #8fd14f 0%, #5fae28 45%, #1f7a3d 100%);
+  box-shadow: 0 30px 70px -30px rgba(31,122,61,.55); }
+.shero__core { position: relative; width: 100%; height: 100%; border-radius: 50%; background: var(--cream); display: flex; align-items: center; justify-content: center; }
+
+/* radial photo tiles — pushed outward by --r (set from JS) along angle --a */
+.shero__tile { position: absolute; width: 96px; height: 96px; border-radius: 18px; overflow: hidden;
+  border: 4px solid #fff; box-shadow: 0 12px 26px -12px rgba(22,39,29,.5);
+  transform: rotate(var(--a)) translateX(var(--r, 0px)) rotate(calc(-1 * var(--a)));
+  transition: transform .25s ease-out; z-index: 1; }
+.shero__tile img { width: 100%; height: 100%; object-fit: cover; }
+
+.shero__center { position: relative; z-index: 10; text-align: center; padding: 0 1.5rem; max-width: 340px;
+  opacity: 0; transform: translateY(8px); transition: opacity .5s var(--ease), transform .5s var(--ease); pointer-events: none; }
+.shero__center.is-on { opacity: 1; transform: none; pointer-events: auto; }
+.shero__eyebrow { text-transform: uppercase; letter-spacing: .22em; font-size: .7rem; font-weight: 600; color: var(--frog-dark); margin-bottom: .7rem; }
+.shero__title { font-size: clamp(2rem, 4vw, 2.9rem); color: var(--forest); line-height: 1.05; margin-bottom: .8rem; }
+.shero__lead { color: var(--muted); font-size: .98rem; margin-bottom: 1.4rem; }
+.shero__actions { display: flex; gap: .7rem; justify-content: center; flex-wrap: wrap; }
+.shero__actions .btn { padding: .7rem 1.25rem; font-size: .9rem; }
+
+.shero__scroll { position: absolute; bottom: 26px; left: 50%; transform: translateX(-50%); width: 26px; height: 42px; border: 2px solid rgba(22,39,29,.35); border-radius: 100px; opacity: .9; transition: opacity .4s; }
+.shero__scroll span { position: absolute; top: 8px; left: 50%; transform: translateX(-50%); width: 4px; height: 8px; background: var(--forest); border-radius: 4px; animation: scrolldot 1.8s infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .shero { height: 100vh; }
+  .shero__scroll span { animation: none; }
+  .shero__tile { transition: none; }
+}
 
 /* ============================================================
    ABOUT
