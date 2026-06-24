@@ -90,14 +90,14 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 500; line-height: 1.08;
 .nav__name { font-family: var(--serif); font-size: 1.35rem; color: #fff; font-weight: 600; letter-spacing: -.01em; }
 .nav__name em { font-style: italic; color: var(--frog); }
 
-.nav__links { display: flex; align-items: center; gap: 2rem; }
-.nav__links a { color: #fff; font-weight: 500; font-size: .95rem; position: relative; padding: .3rem 0; }
+.nav__links { display: flex; align-items: center; gap: 1.7rem; }
+.nav__links a { color: #fff; font-weight: 500; font-size: .95rem; position: relative; padding: .3rem 0; white-space: nowrap; }
 .nav__links a:not(.nav__cta)::after {
   content: ""; position: absolute; left: 0; bottom: -2px; width: 0; height: 2px;
   background: var(--frog); transition: width .35s var(--ease);
 }
 .nav__links a:not(.nav__cta):hover::after { width: 100%; }
-.nav__cta { background: var(--frog); color: #fff !important; padding: .6rem 1.25rem; border-radius: 100px; transition: background .3s, transform .3s; }
+.nav__cta { background: var(--frog); color: #fff !important; padding: .5rem 1.1rem; font-size: .9rem; border-radius: 100px; margin-left: .3rem; transition: background .3s, transform .3s; }
 .nav__cta:hover { background: var(--frog-dark); transform: translateY(-2px); }
 
 /* scrolled state */
@@ -296,7 +296,7 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 500; line-height: 1.08;
 /* ============================================================
    RESPONSIVE
    ============================================================ */
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .nav__links {
     position: fixed; inset: 0 0 0 auto; width: min(78vw, 320px);
     flex-direction: column; align-items: flex-start; justify-content: center;
