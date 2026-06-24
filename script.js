@@ -58,9 +58,9 @@
     const ringMid = document.getElementById("ringMid");
     const center = document.getElementById("sheroCenter");
     const scrollHint = shero.querySelector(".shero__scroll");
-    const BASE = 600;       // stage design size in px
-    const CONTENT = 780;    // stage + outward tiles (with safety margin so nothing clips)
-    const MAX_R = 300;      // max tile radius in base px
+    const BASE = 640;       // stage design size in px
+    const CONTENT = 820;    // stage + outward tiles (with safety margin so nothing clips)
+    const MAX_R = 320;      // max tile radius in base px
     const ORBIT = 32;       // degrees the ring gently rotates as it blooms
     let ticking = false;
 
