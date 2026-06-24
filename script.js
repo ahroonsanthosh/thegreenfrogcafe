@@ -59,14 +59,16 @@
     const center = document.getElementById("sheroCenter");
     const scrollHint = shero.querySelector(".shero__scroll");
     const BASE = 600;       // stage design size in px
-    const CONTENT = 700;    // stage + outward tiles (tiles reach ~348px radius)
+    const CONTENT = 780;    // stage + outward tiles (with safety margin so nothing clips)
     const MAX_R = 300;      // max tile radius in base px
+    const ORBIT = 32;       // degrees the ring gently rotates as it blooms
     let ticking = false;
 
-    // scale the whole stage to fit the viewport (keeps the animation crisp on any device)
+    // scale the whole stage to fill the viewport (grows on big screens, shrinks on small)
     const fit = () => {
-      const pad = 28;
-      const s = Math.min(1, (window.innerWidth - pad) / CONTENT, (window.innerHeight - pad) / CONTENT);
+      const pad = 24;
+      let s = Math.min((window.innerWidth - pad) / CONTENT, (window.innerHeight - pad) / CONTENT);
+      s = Math.max(0.3, Math.min(s, 1.6));
       stage.style.transform = "scale(" + s.toFixed(3) + ")";
     };
 
@@ -78,7 +80,11 @@
       const p = reduceMotion ? 1 : Math.min(raw / 0.55, 1);
       const r = p * MAX_R;
 
-      tiles.forEach((t) => t.style.setProperty("--r", r + "px"));
+      tiles.forEach((t) => {
+        const base = parseFloat(t.dataset.angle) || 0;
+        t.style.setProperty("--r", r + "px");
+        t.style.setProperty("--a", (base + ORBIT * p) + "deg");  // gentle orbit while expanding
+      });
       ringMid.classList.toggle("is-on", p > 0.15);
       ringOuter.classList.toggle("is-on", p > 0.45);
       center.classList.toggle("is-on", p > 0.4);

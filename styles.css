@@ -93,14 +93,14 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 500; line-height: 1.08;
 .nav__name { font-family: var(--serif); font-size: 1.35rem; color: var(--forest); font-weight: 600; letter-spacing: -.01em; }
 .nav__name em { font-style: italic; color: var(--frog); }
 
-.nav__links { display: flex; align-items: center; gap: 1.7rem; }
+.nav__links { display: flex; align-items: center; gap: 2rem; }
 .nav__links a { color: var(--forest); font-weight: 500; font-size: .95rem; position: relative; padding: .3rem 0; white-space: nowrap; }
 .nav__links a:not(.nav__cta)::after {
   content: ""; position: absolute; left: 0; bottom: -2px; width: 0; height: 2px;
   background: var(--frog); transition: width .35s var(--ease);
 }
 .nav__links a:not(.nav__cta):hover::after { width: 100%; }
-.nav__cta { background: var(--frog); color: #fff !important; padding: .5rem 1.1rem; font-size: .9rem; border-radius: 100px; margin-left: .3rem; transition: background .3s, transform .3s; }
+.nav__cta { background: var(--frog); color: #fff !important; padding: .8rem 1.7rem; font-size: .95rem; font-weight: 600; border-radius: 100px; margin-left: .5rem; box-shadow: 0 8px 20px -8px rgba(95,174,40,.6); transition: background .3s, transform .3s; }
 .nav__cta:hover { background: var(--frog-dark); transform: translateY(-2px); }
 
 /* scrolled state — deepen background + shadow */
@@ -151,10 +151,10 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 500; line-height: 1.08;
   box-shadow: 0 30px 70px -30px rgba(31,122,61,.55); }
 .shero__core { position: relative; width: 100%; height: 100%; border-radius: 50%; background: var(--cream); display: flex; align-items: center; justify-content: center; }
 
-/* radial photo tiles — pushed outward by --r (set from JS) along angle --a */
-.shero__tile { position: absolute; width: 96px; height: 96px; border-radius: 18px; overflow: hidden;
-  border: 4px solid #fff; box-shadow: 0 12px 26px -12px rgba(22,39,29,.5);
-  transform: rotate(var(--a)) translateX(var(--r, 0px)) rotate(calc(-1 * var(--a)));
+/* radial photo tiles — pushed outward by --r and orbited via --a (both set from JS) */
+.shero__tile { position: absolute; width: 140px; height: 140px; border-radius: 22px; overflow: hidden;
+  border: 5px solid #fff; box-shadow: 0 16px 34px -14px rgba(22,39,29,.55);
+  transform: rotate(var(--a, 0deg)) translateX(var(--r, 0px)) rotate(calc(-1 * var(--a, 0deg)));
   transition: transform .25s ease-out; z-index: 1; }
 .shero__tile img { width: 100%; height: 100%; object-fit: cover; }
 
