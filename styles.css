@@ -332,6 +332,7 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 500; line-height: 1.08;
 .field { display: flex; flex-direction: column; gap: .4rem; }
 .field--full { grid-column: 1 / -1; }
 .field label { font-size: .82rem; font-weight: 600; letter-spacing: .04em; color: rgba(255,255,255,.75); transition: color .3s var(--ease); transform-origin: left; }
+.field__opt { font-weight: 400; opacity: .6; }
 .field:focus-within label { color: var(--frog); }
 .field input, .field select, .field textarea {
   font-family: var(--sans); font-size: 1rem; color: #fff;

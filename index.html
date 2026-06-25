@@ -37,7 +37,7 @@
         <a href="#menu">Menu</a>
         <a href="#gallery">Gallery</a>
         <a href="#visit">Visit</a>
-        <a href="#reserve" class="nav__cta">Book a table</a>
+        <a href="#reserve">Contact</a>
       </nav>
 
       <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
@@ -287,12 +287,12 @@
       </div>
     </section>
 
-    <!-- ===== RESERVE / CONTACT ===== -->
+    <!-- ===== CONTACT ===== -->
     <section class="reserve section" id="reserve">
       <div class="reserve__inner reveal">
         <p class="kicker">Get in touch</p>
-        <h2>Book a table or drop us a line</h2>
-        <p class="reserve__lead">Planning to visit with a group, or have a question? Send us the details and we'll get back to you.</p>
+        <h2>Drop us a line</h2>
+        <p class="reserve__lead">Got a question, a big group coming, or a catering enquiry? Send us a message and we'll get right back to you. Otherwise, just pop in — no booking needed.</p>
 
         <form class="reserve__form" id="reserveForm" novalidate>
           <div class="field">
@@ -303,35 +303,16 @@
             <label for="email">Email</label>
             <input type="email" id="email" name="email" autocomplete="email" required />
           </div>
-          <div class="field">
-            <label for="phone">Phone</label>
+          <div class="field field--full">
+            <label for="phone">Phone <span class="field__opt">(optional)</span></label>
             <input type="tel" id="phone" name="phone" autocomplete="tel" />
-          </div>
-          <div class="field">
-            <label for="guests">Party size</label>
-            <select id="guests" name="guests">
-              <option value="1">1 person</option>
-              <option value="2" selected>2 people</option>
-              <option value="3">3 people</option>
-              <option value="4">4 people</option>
-              <option value="5">5 people</option>
-              <option value="6+">6+ people</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="date">Preferred date</label>
-            <input type="date" id="date" name="date" />
-          </div>
-          <div class="field">
-            <label for="time">Preferred time</label>
-            <input type="time" id="time" name="time" />
           </div>
           <div class="field field--full">
             <label for="message">Message</label>
-            <textarea id="message" name="message" rows="4" placeholder="Anything we should know?"></textarea>
+            <textarea id="message" name="message" rows="4" placeholder="How can we help?"></textarea>
           </div>
           <div class="field field--full">
-            <button type="submit" class="btn btn--solid btn--block">Send request</button>
+            <button type="submit" class="btn btn--solid btn--block">Send message</button>
             <p class="form__status" id="formStatus" role="status" aria-live="polite"></p>
           </div>
         </form>
