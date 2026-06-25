@@ -54,27 +54,28 @@
   const stage = document.getElementById("sheroStage");
   if (shero && stage) {
     const tiles = stage.querySelectorAll(".shero__tile");
+    const sticky = shero.querySelector(".shero__sticky");
     const ringOuter = document.getElementById("ringOuter");
     const ringMid = document.getElementById("ringMid");
     const center = document.getElementById("sheroCenter");
     const scrollHint = shero.querySelector(".shero__scroll");
-    const BASE = 640;       // stage design size in px
-    const CONTENT = 812;    // stage + outward tiles (tiles reach ~399px radius)
-    const MAX_R = 315;      // max tile radius in base px
+    const CONTENT = 912;    // ring + outward tiles (extra spacing so squares never overlap)
+    const MAX_R = 377;      // max tile radius in base px (spaced so squares never overlap)
     const ORBIT = 32;       // degrees the ring gently rotates as it blooms
     let ticking = false;
 
-    // scale the whole stage to fill the viewport (grows on big screens, shrinks on small)
+    // scale the whole stage to fill the pinned box (grows on big screens, shrinks on small)
     const fit = () => {
-      const pad = 12;
-      let s = Math.min((window.innerWidth - pad) / CONTENT, (window.innerHeight - pad) / CONTENT);
+      const pad = 16;
+      const boxH = sticky ? sticky.offsetHeight : window.innerHeight;
+      let s = Math.min((window.innerWidth - pad) / CONTENT, (boxH - pad) / CONTENT);
       s = Math.max(0.3, Math.min(s, 1.9));
       stage.style.transform = "scale(" + s.toFixed(3) + ")";
     };
 
     const update = () => {
       const rect = shero.getBoundingClientRect();
-      const total = shero.offsetHeight - window.innerHeight;
+      const total = shero.offsetHeight - (sticky ? sticky.offsetHeight : window.innerHeight);
       const raw = total > 0 ? Math.min(Math.max(-rect.top / total, 0), 1) : 0;
       // complete the bloom within the first ~55% of the pinned scroll, then hold
       const p = reduceMotion ? 1 : Math.min(raw / 0.55, 1);

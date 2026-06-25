@@ -138,21 +138,21 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 500; line-height: 1.08;
 .shero { position: relative; height: 220vh; background: var(--cream); }
 .shero__sticky { position: sticky; top: 0; height: 100vh; height: 100svh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
 
-/* base stage is 640px; JS scales it to fit the viewport */
-.shero__stage { position: relative; width: 640px; height: 640px; transform-origin: center center; will-change: transform; }
+/* base stage is 720px; JS scales it to fit the viewport */
+.shero__stage { position: relative; width: 720px; height: 720px; transform-origin: center center; will-change: transform; }
 
 .shero__ring { width: 100%; height: 100%; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid transparent; transition: border-color .5s var(--ease); }
 .shero__ring--outer.is-on { border-color: rgba(22,39,29,.12); }
-.shero__ring--mid   { width: 545px; height: 545px; }
+.shero__ring--mid   { width: 620px; height: 620px; }
 .shero__ring--mid.is-on { border-color: rgba(95,174,40,.30); }
 
-.shero__grad { width: 450px; height: 450px; border-radius: 50%; padding: 3px; display: flex; align-items: center; justify-content: center;
+.shero__grad { width: 460px; height: 460px; border-radius: 50%; padding: 3px; display: flex; align-items: center; justify-content: center;
   background: linear-gradient(125deg, #8fd14f 0%, #5fae28 45%, #1f7a3d 100%);
   box-shadow: 0 30px 70px -30px rgba(31,122,61,.55); }
 .shero__core { position: relative; width: 100%; height: 100%; border-radius: 50%; background: var(--cream); display: flex; align-items: center; justify-content: center; }
 
 /* radial photo tiles — pushed outward by --r and orbited via --a (both set from JS) */
-.shero__tile { position: absolute; width: 168px; height: 168px; border-radius: 26px; overflow: hidden;
+.shero__tile { position: absolute; width: 158px; height: 158px; border-radius: 24px; overflow: hidden;
   border: 5px solid #fff; box-shadow: 0 16px 34px -14px rgba(22,39,29,.55);
   transform: rotate(var(--a, 0deg)) translateX(var(--r, 0px)) rotate(calc(-1 * var(--a, 0deg)));
   transition: transform .25s ease-out; z-index: 1; }
@@ -173,6 +173,12 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 500; line-height: 1.08;
   .shero { height: 100vh; }
   .shero__scroll span { animation: none; }
   .shero__tile { transition: none; }
+}
+
+/* Mobile: shrink the pinned area so there's far less empty space around the ring */
+@media (max-width: 640px) {
+  .shero { height: 165vh; }
+  .shero__sticky { height: 82svh; }
 }
 
 /* ============================================================
