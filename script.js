@@ -124,20 +124,26 @@
   const lightbox = document.getElementById("lightbox");
   const lightboxImg = document.getElementById("lightboxImg");
   const lightboxClose = document.getElementById("lightboxClose");
-  const openLightbox = (src, alt) => {
+  let lastFocused = null;
+  const openLightbox = (src, alt, trigger) => {
+    lastFocused = trigger || null;
     lightboxImg.src = src;
     lightboxImg.alt = alt || "";
     lightbox.classList.add("is-open");
     lightbox.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
+    lightboxClose.focus();
   };
   const hideLightbox = () => {
+    if (!lightbox.classList.contains("is-open")) return;
     lightbox.classList.remove("is-open");
     lightbox.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
+    if (lastFocused) { lastFocused.focus(); lastFocused = null; }
   };
-  document.querySelectorAll(".gallery__item img").forEach((img) => {
-    img.addEventListener("click", () => openLightbox(img.currentSrc || img.src, img.alt));
+  document.querySelectorAll(".gallery__item").forEach((btn) => {
+    const img = btn.querySelector("img");
+    btn.addEventListener("click", () => openLightbox(img.currentSrc || img.src, img.alt, btn));
   });
   lightboxClose.addEventListener("click", hideLightbox);
   lightbox.addEventListener("click", (e) => { if (e.target === lightbox) hideLightbox(); });
