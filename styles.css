@@ -107,7 +107,7 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 500; line-height: 1.08;
   background: var(--frog); transition: width .35s var(--ease);
 }
 .nav__links a:not(.nav__cta):hover::after { width: 100%; }
-.nav__cta { background: var(--frog); color: #fff !important; padding: .8rem 2.5rem; font-size: .98rem; font-weight: 600; border-radius: 100px; margin-left: .6rem; white-space: nowrap; box-shadow: 0 8px 20px -8px rgba(95,174,40,.6); transition: background .3s, transform .3s; }
+.nav__cta { background: var(--frog); color: #fff !important; padding: .85rem 3rem; font-size: .98rem; font-weight: 600; border-radius: 100px; margin-left: .6rem; white-space: nowrap; box-shadow: 0 8px 20px -8px rgba(95,174,40,.6); transition: background .3s, transform .3s; }
 .nav__cta:hover { background: var(--frog-dark); transform: translateY(-2px); }
 
 /* scrolled state — deepen background + shadow */
