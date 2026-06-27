@@ -174,7 +174,7 @@
          To make it live, connect an endpoint (e.g. Formspree / Netlify Forms)
          by setting form.action + method="POST", or wire to your booking system.
          For now we confirm to the visitor and offer a phone fallback. */
-      status.textContent = "Thanks " + name + "! We'll be in touch shortly. (Or call us on 083 383 9098.)";
+      status.textContent = "Thanks " + name + "! We'll be in touch shortly. (Or call us on 087 948 4195.)";
       status.className = "form__status is-ok";
       form.reset();
     });
